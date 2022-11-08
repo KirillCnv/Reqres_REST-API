@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 
-public class restApiTest extends ConfigTest {
+public class RestApiTest extends ConfigTest {
 
     @DisplayName("Проверка удачной регистрации")
     @Test
