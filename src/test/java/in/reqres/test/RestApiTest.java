@@ -1,11 +1,16 @@
 package in.reqres.test;
 
 import in.reqres.config.ConfigTest;
+import in.reqres.models.Lombok.LoginUserLombokBody;
+import in.reqres.models.Lombok.RegisterUserLombok;
+import in.reqres.models.Lombok.ResponseLombok;
+import in.reqres.models.Pojo.RegisterBodyPojo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static in.reqres.spec.SpecRequest.requestSpecHeader;
 import static io.restassured.RestAssured.given;
-import static io.restassured.http.ContentType.JSON;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -14,87 +19,42 @@ public class RestApiTest extends ConfigTest {
 
     @DisplayName("Проверка удачной регистрации")
     @Test
-    public void successRegistration() {
-        TestData testData = new TestData();
-        testData
-                .setEmail("eve.holt@reqres.in")
-                .setPassword("pistol");
+    public void successPojoRegistration() {
+        String token = "QpwL5tke4Pnpja7X4";
+        RegisterUserLombok registerUserLombok = new RegisterUserLombok();
+        registerUserLombok.setEmail("eve.holt@reqres.in");
+        registerUserLombok.setPassword("pistol");
 
-        given()
-                .log().uri()
-                .log().body()
-                .contentType(JSON)
-                .body(testData)
+        ResponseLombok response = given()
+                .spec(requestSpecHeader)
+                .body(registerUserLombok)
                 .when()
                 .post("https://reqres.in/api/register")
                 .then()
                 .log().status()
                 .log().body()
                 .statusCode(200)
-                .body("id", is(4))
-                .body("token", is("QpwL5tke4Pnpja7X4"));
+                .extract()
+                .as(ResponseLombok.class);
+
+        assertThat(response.getToken()).isEqualTo(token);
     }
 
-    @DisplayName("Проверка неудачной регистрации")
-    @Test
-    public void notSuccessRegistration() {
-        TestData testData = new TestData();
-        testData
-                .setEmail("sydney@fife");
 
-        given()
-                .log().uri()
-                .log().body()
-                .contentType(JSON)
-                .body(testData)
-                .when()
-                .post("https://reqres.in/api/register")
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(400)
-                .body("error", is("Missing password"));
-    }
 
-    @DisplayName("Создать пользователя")
-    @Test
-    public void createUser() {
-        TestData testData = new TestData();
-        testData
-                .setName("morpheus")
-                .setJob("leader");
 
-        given()
-                .log().uri()
-                .log().body()
-                .contentType(JSON)
-                .body(testData)
-                .when()
-                .post("/api/users")
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(201)
-                .body("name", is("morpheus"))
-                .body("job", is("leader"))
-                .body("id", notNullValue())
-                .body("createdAt", notNullValue());
-
-    }
 
     @DisplayName("Успешный вход в систему")
     @Test
-    public void loginTest() {
-        TestData testData = new TestData();
-        testData
-                .setEmail("eve.holt@reqres.in")
-                .setPassword("cityslicka");
+    public void loginPojoTest() {
+        LoginUserLombokBody createUserLombokBody = new LoginUserLombokBody();
+        createUserLombokBody.setEmail("eve.holt@reqres.in");
+        createUserLombokBody.setPassword("cityslicka");
+
 
         given()
-                .log().uri()
-                .log().body()
-                .contentType(JSON)
-                .body(testData)
+                .spec(requestSpecHeader)
+                .body(createUserLombokBody)
                 .when()
                 .post("/api/login")
                 .then()
@@ -106,18 +66,17 @@ public class RestApiTest extends ConfigTest {
     }
 
 
+
     @DisplayName("Не успешный вход в систему")
     @Test
-    public void notLoginTest() {
-        TestData testData = new TestData();
-        testData
-                .setEmail("peter@klaven");
+    public void notLoginPojoTest() {
+        RegisterBodyPojo registerBodyPojo = new RegisterBodyPojo();
+        registerBodyPojo.setEmail("peter@klaven");
+
 
         given()
-                .log().uri()
-                .log().body()
-                .contentType(JSON)
-                .body(testData)
+                .spec(requestSpecHeader)
+                .body(registerBodyPojo)
                 .when()
                 .post("/api/login")
                 .then()
