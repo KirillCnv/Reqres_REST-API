@@ -1,18 +1,17 @@
 package in.reqres.test;
 
 import in.reqres.config.ConfigTest;
-import in.reqres.models.Lombok.LoginUserLombokBody;
-import in.reqres.models.Lombok.RegisterUserLombok;
-import in.reqres.models.Lombok.ResponseLombok;
-import in.reqres.models.Pojo.RegisterBodyPojo;
+import in.reqres.models.lombok.LoginUserLombokBody;
+import in.reqres.models.lombok.RegisterUserLombok;
+import in.reqres.models.lombok.ResponseLombok;
+import in.reqres.models.pojo.RegisterBodyPojo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static in.reqres.spec.SpecRequest.requestSpecHeader;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 
 public class RestApiTest extends ConfigTest {
@@ -41,9 +40,6 @@ public class RestApiTest extends ConfigTest {
     }
 
 
-
-
-
     @DisplayName("Успешный вход в систему")
     @Test
     public void loginPojoTest() {
@@ -66,7 +62,6 @@ public class RestApiTest extends ConfigTest {
     }
 
 
-
     @DisplayName("Не успешный вход в систему")
     @Test
     public void notLoginPojoTest() {
@@ -87,6 +82,21 @@ public class RestApiTest extends ConfigTest {
 
     }
 
+    @DisplayName("Проверка с помощью Groovy")
+    @Test
+    public void groovyTest() {
+
+        given()
+                .spec(requestSpecHeader)
+                .when()
+                .get("/api/unknown")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("data.findAll{it.year}.year.flatten()", hasItem(2004));
+
+    }
 
 }
 

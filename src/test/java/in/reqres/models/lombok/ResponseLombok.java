@@ -1,4 +1,4 @@
-package in.reqres.models.Lombok;
+package in.reqres.models.lombok;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package in.reqres.models.Pojo;
+package in.reqres.models.pojo;
 
 public class RegisterBodyPojo {
     private String email;

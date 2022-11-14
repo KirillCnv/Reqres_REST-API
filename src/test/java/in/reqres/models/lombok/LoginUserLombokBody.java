@@ -1,9 +1,9 @@
-package in.reqres.models.Lombok;
+package in.reqres.models.lombok;
 
 import lombok.Data;
 
 @Data
-public class RegisterUserLombok {
+public class LoginUserLombokBody {
     private String email,
             password;
 
