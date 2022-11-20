@@ -2,10 +2,17 @@ package in.reqres.test;
 
 import in.reqres.config.ConfigTest;
 import in.reqres.pages.RestApiTestPage;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
+
+@Feature("Проверка сайта reqres.in")
+@Story("Проверка сайта reqres.in")
+@Owner("KirillCnv")
+@Severity(SeverityLevel.CRITICAL)
+@Link(value = "Testing", url = "https://reqres.in/")
 
 
 public class RestApiTest extends ConfigTest {
