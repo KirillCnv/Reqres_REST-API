@@ -1,0 +1,17 @@
+token
+5799496787:AAE4haLE2mlRMK9rSnZ7r4uPwK0JOgceBDE
+"id": -1001740718033
+
+ https://api.telegram.org/bot5799496787:AAE4haLE2mlRMK9rSnZ7r4uPwK0JOgceBDE/getUpdates
+
+
+ curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001740718033", "text": "This is a test from ", "disable_notification": true}' https://api.telegram.org/bot5799496787:AAE4haLE2mlRMK9rSnZ7r4uPwK0JOgceBDE/sendMessage
+
+   "telegram": {
+     "token": "5799496787:AAE4haLE2mlRMK9rSnZ7r4uPwK0JOgceBDE",
+     "chat": "-1001740718033",
+     "replyTo": ""
+   }
+
+
+   java "-DconfigFile=notifications/telegram.json" -jar notifications/allure-notifications-4.2.1.jar
