@@ -5,6 +5,8 @@ import in.reqres.models.lombok.RegisterUserLombok;
 import in.reqres.models.lombok.ResponseLombok;
 import io.qameta.allure.Step;
 
+import static in.reqres.test.TestData.id;
+import static io.restassured.RestAssured.sessionId;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static in.reqres.spec.SpecRequest.requestSpecHeader;
@@ -34,7 +36,9 @@ public class RestApiTestPage {
                 .extract()
                 .as(ResponseLombok.class);
 
+        assertThat(response.getId()).isEqualTo(id);
         assertThat(response.getToken()).isEqualTo(token);
+
 
         return this;
     }
