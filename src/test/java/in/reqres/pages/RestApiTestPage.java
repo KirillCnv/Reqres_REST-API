@@ -40,6 +40,7 @@ public class RestApiTestPage {
         assertThat(response.getToken()).isEqualTo(token);
 
 
+
         return this;
     }
 
@@ -81,6 +82,7 @@ public class RestApiTestPage {
                 .statusCode(400)
                 .body("error", is("Missing password"));
 
+
         return this;
     }
 
@@ -96,6 +98,7 @@ public class RestApiTestPage {
                     .log().body()
                     .statusCode(200)
                     .body("data.findAll{it.year}.year.flatten()", hasItem(2004));
+
 
         return this;
     }

@@ -87,28 +87,4 @@ tasks.withType(Test) {
         useJUnitPlatform()
     }
 
-//    task web_tests(type: Test) {
-//        useJUnitPlatform {
-//            includeTags "WEB"
-//        }
-//    }
-//
-//    task api_tests(type: Test) {
-//        useJUnitPlatform {
-//            includeTags "API"
-//        }
-//    }
-//
-//    task web_api_tests(type: Test) {
-//        useJUnitPlatform {
-//            includeTags "WEB", "API"
-//        }
-//    }
-//
-//    task mobile_tests(type: Test) {
-//        useJUnitPlatform {
-//            includeTags "Mobile"
-//        }
-//    }
-//
 }
