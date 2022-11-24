@@ -52,3 +52,7 @@ gradle clean test
 <a href=""><img src="images/screen/dashboardApi.png" alt="Jenkins"/></a>
 <a href=""><img src="images/screen/testCaseApi.png" alt="Jenkins"/></a>
 </p>
+
+##  Отчёт в telegram
+
+<a href=""><img src="images/screen/Telegram.png" alt="Jenkins"/></a>
