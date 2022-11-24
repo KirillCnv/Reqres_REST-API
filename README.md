@@ -28,9 +28,9 @@
 </p>
 
 ## :man_cook: Jenkins job
-<img src="images/logo/Jenkins.svg" width="25" height="25"  alt="Jenkins"/></a>  <a target="_blank" href="">Jenkins job</a>
+<img src="images/logo/Jenkins.svg" width="25" height="25"  alt="Jenkins"/></a>  <a target="_blank" href="https://jenkins.autotests.cloud/job/HW_12_REST-API/">Jenkins job</a>
 <p align="center">
-<a href=""><img src="images/screen/jenkins.jpg" alt="Jenkins"/></a>
+<a href=""><img src="images/screen/JenkinsApi.png" alt="Jenkins"/></a>
 </p>
 
 
@@ -40,7 +40,15 @@ gradle clean test
 ```
 
 ## :bar_chart: Allure-отчет
-<img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="">Allure report</a>
+<img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="https://jenkins.autotests.cloud/job/HW_12_REST-API/allure/">Allure report</a>
 <p align="center">
-<a href=""><img src="images/screen/allure.jpg" alt="Jenkins"/></a>
+<a href=""><img src="images/screen/AllureApi.png" alt="Jenkins"/></a>
+</p>
+
+## :bar_chart: Интеграция с Allure TestOps
+
+<img src="images/logo/Allure_Ops.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="https://allure.autotests.cloud/project/1710/dashboards">Allure TestOps</a>
+<p align="center">
+<a href=""><img src="images/screen/dashboardApi.png" alt="Jenkins"/></a>
+<a href=""><img src="images/screen/testCaseApi.png" alt="Jenkins"/></a>
 </p>
