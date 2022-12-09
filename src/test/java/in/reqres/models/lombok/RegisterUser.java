@@ -3,8 +3,7 @@ package in.reqres.models.lombok;
 import lombok.Data;
 
 @Data
-public class LoginUserLombokBody {
+public class RegisterUser {
     private String email,
             password;
-
 }

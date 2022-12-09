@@ -9,5 +9,4 @@ public class CustomListener {
         FILTER.setResponseTemplate("response.ftl");
         return FILTER;
     }
-
 }

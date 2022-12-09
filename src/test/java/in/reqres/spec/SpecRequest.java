@@ -13,6 +13,4 @@ public class SpecRequest {
             .log().uri()
             .log().body()
             .contentType(JSON);
-
-
 }
